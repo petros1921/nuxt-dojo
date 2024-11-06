@@ -16,5 +16,10 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     currencyKey: process.env.CURRENCY_API_KEY
+  },
+  vite: {
+    ssr: {
+      noExternal: ['nitropack'], // Exclude 'nitropack' from server-side bundling
+    },
   }
 })
