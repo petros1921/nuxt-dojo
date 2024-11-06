@@ -19,7 +19,10 @@ export default defineNuxtConfig({
   },
   vite: {
     ssr: {
-      noExternal: ['nitropack', 'nitropa'], // Exclude 'nitropack' from server-side bundling
+      noExternal: ['nitropack', 'nitropa'], // Exclude 'nitropack' and 'nitropa' from server-side bundling
     },
-  }
+  },
+  plugins: [
+    { src: '~/plugins/nitropack.client.js', mode: 'client' } // Load nitropack client-side
+  ],
 })
