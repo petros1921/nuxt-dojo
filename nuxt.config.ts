@@ -16,5 +16,15 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     currencyKey: process.env.CURRENCY_API_KEY
-  }
+  },
+  nitro: {
+    externals: {
+      inline: ['nitropack', 'nitropa'],
+    },
+  },
+
+  // Transpile these modules if necessary
+  build: {
+    transpile: ['nitropack', 'nitropa'],
+  },
 })
