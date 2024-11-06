@@ -18,13 +18,17 @@ export default defineNuxtConfig({
     currencyKey: process.env.CURRENCY_API_KEY
   },
   nitro: {
+    // Exclude nitropack to prevent issues during server runtime
     externals: {
-      inline: ['nitropack', 'nitropa'],
+      inline: ['nitropack']
     },
   },
-
-  // Transpile these modules if necessary
-  build: {
-    transpile: ['nitropack', 'nitropa'],
-  },
+  vite: {
+    ssr: {
+      noExternal: ['nitropack'] // Prevent Rollup from bundling nitropack in SSR
+    },
+    optimizeDeps: {
+      exclude: ['nitropack'], // Exclude from dependency pre-bundling in Vite
+    }
+  }
 })
